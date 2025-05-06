@@ -1,0 +1,34 @@
+// Pseudocode Expression Tree
+FUNCTION constructTree(postfix):
+    stack = empty stack
+    FOR each token IN postfix:
+        IF token is operand:
+            CREATE node with token
+            PUSH node to stack
+        ELSE IF token is operator:
+            CREATE node with token
+            node.right = POP stack
+            node.left = POP stack
+            PUSH node to stack
+    RETURN POP stack
+
+// Pseudocode Postorder Traversal
+FUNCTION postorder(node):
+    IF node is not null:
+        postorder(node.left)
+        postorder(node.right)
+        OUTPUT node.value
+
+// Pseudocode Evaluasi postfix
+FUNCTION evaluatePostfix(postfix):
+    stack = empty stack
+    FOR each token IN postfix:
+        IF token is operand:
+            PUSH token to stack
+        ELSE:
+            operand2 = POP stack
+            operand1 = POP stack
+            result = apply operator token on operand1 and operand2
+            PUSH result to stack
+    RETURN POP stack
+
